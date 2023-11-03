@@ -2,21 +2,37 @@
 
 namespace Database\Seeders;
 
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Tenant;
 
 class DatabaseSeeder extends Seeder
 {
-    /**
-     * Seed the application's database.
-     */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
-
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        if(tenant()){
+            $this->call([
+                UserSeeder::class
+            ]);
+        }else{
+            /** @var Tenant $tenant */
+            $tenant = Tenant::query()->create([
+                'id' => 'company-1',
+                'name' => 'company-1',
+                'description' => 'this is a first company',
+                'logo' => 'https://w7.pngwing.com/pngs/402/36/png-transparent-lorem-ipsum-logo-font-ofset-text-logo-integer.png',
+                'email' => 'componay1@example.com',
+            ]);
+            $tenant->domains()->create(['domain' => 'company-1.localhost']);
+            
+            /** @var Tenant $tenant */
+            $tenant = Tenant::query()->create([
+                'id' => 'company-2',
+                'name' => 'company-2',
+                'description' => 'this is a second company',
+                'logo' => 'https://image.similarpng.com/very-thumbnail/2020/12/Lorem-ipsum-logo-isolated-clipart-PNG.png',
+                'email' => 'componay2@example.com',
+            ]);
+            $tenant->domains()->create(['domain' => 'company-2.localhost']);
+        }
     }
 }
