@@ -84,6 +84,8 @@ DB_DATABASE=multi_tenancy
 DB_USERNAME=sail
 DB_PASSWORD=password
 
+FILESYSTEM_DISK=s3
+
 AWS_ACCESS_KEY_ID=sail
 AWS_SECRET_ACCESS_KEY=password
 AWS_DEFAULT_REGION=us-east-1
@@ -94,7 +96,7 @@ AWS_USE_PATH_STYLE_ENDPOINT=true
 
 ```
 
-#### configure o bucket na minio para receber os uploads.
+#### configure o bucket na minio para receber/exibir as logos do upload.
 
 rode as migrações com alguns dados
 
